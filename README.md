@@ -1,50 +1,38 @@
 # Spearmint
 
-A collection of [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code/skills) that review and refactor code for structural quality. They help reduce nesting, improve names, simplify abstractions, apply dependency injection, and convert imperative loops to functional patterns.
+Structural refactoring skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills). Five commands that flatten nesting, fix names, simplify abstractions, inject dependencies, and convert loops to functional pipelines.
+
+## Why?
+
+AI coding agents are fast, but they often write code with comments that repeat what the code already says, nest logic 6+ levels deep instead of using guard clauses, reach for abstract class hierarchies when a plain function would do, and scatter magic numbers through business logic. The code works, but it's harder to review, maintain, and change.
+
+Spearmint is designed to run after an agent's initial pass. Each skill targets a specific class of structural problem with concrete refactoring techniques, so the output is code that's easier work with before it's merged.
 
 ## Skills
 
-### `/flatten-code`
+| Skill | What it does |
+|-------|-------------|
+| `/flatten-code` | Reduces nesting beyond 3 levels using guard clauses, early returns, and extraction into named functions |
+| `/self-documenting-code` | Replaces magic numbers, abbreviations, and comment-dependent code with expressive names, constants, and types |
+| `/simplify-abstractions` | Removes _premature_ interfaces and inheritance, replaces with composition, ensures abstractions earn their cost |
+| `/dependency-injection` | Extracts interfaces for dependencies, moves construction to factories, enables testing with fakes |
+| `/functional-patterns` | Converts imperative loops to `filter`/`map`/`reduce` pipelines, adapted to language idioms (JS chaining, Python comprehensions, Java Streams, etc.) |
 
-Finds deeply nested code, typically identified by more than 3 levels, and refactors them using **inversion** (guard clauses, early returns) and **extraction** (pulling inner blocks into named functions). The result is flat code where the top-level function reads like a table of contents.
-
-### `/self-documenting-code`
-
-Fixes naming problems and eliminates unnecessary comments. Replaces magic numbers with named constants, abbreviations with full names, complex conditions with named booleans, and comment-dependent APIs with expressive types. Decomposes `Utils`/`Helper` classes into properly named types.
-
-### `/simplify-abstractions`
-
-Evaluates abstractions and inheritance hierarchies for over-coupling. Removes premature interfaces (1-2 implementations with no deferred usage), replaces inheritance with composition, and ensures abstractions earn their coupling cost. Explains when to reintroduce an abstraction later.
-
-### `/dependency-injection`
-
-Refactors tightly coupled code to accept dependencies as parameters. Extracts interfaces for external services, moves construction logic to factories, and centralizes wiring in a composition root. Demonstrates how the refactored structure enables testing with fakes and mocks.
-
-### `/functional-patterns`
-
-Converts imperative loops into declarative data pipelines using `filter`, `map`, `reduce`, `sort`, and `slice`. Adapts to language idioms (JS method chaining, Python comprehensions, Java Streams, C# LINQ, Rust iterators). Leaves side-effectful loops alone.
+Each skill is language-agnostic and includes detailed before/after examples. See the [skill definitions](skills/) for full rules and procedures.
 
 ## Installation
 
-### Per-project (recommended)
-
-Copy the `skills/` directory into the `.claude/skills/` dir of your project:
+**Per-project** (recommended):
 
 ```sh
-cp -r skills/ /path/to/your-project/.claude/skills/
+cp -r skills/ your-project/.claude/skills/
 ```
 
-Skills will be available when running Claude Code inside that project.
-
-### Global (all projects)
-
-Copy the skill directories into your personal Claude Code config:
+**Global** (all projects):
 
 ```sh
 cp -r skills/* ~/.claude/skills/
 ```
-
-Skills will be available in every project.
 
 ## Usage
 
@@ -57,3 +45,9 @@ Invoke any skill by name inside Claude Code:
 /dependency-injection
 /functional-patterns
 ```
+
+Each skill scans the files you point it at, identifies problems, and applies targeted refactorings.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
