@@ -1,5 +1,5 @@
 {
-  "name": "spearmint",
+  "name": "skills",
   "skills": [
     "./skills/dependency-injection",
     "./skills/flatten",
