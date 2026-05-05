@@ -12,8 +12,8 @@ Spearmint is designed to run after an agent's initial pass. Each skill targets a
 
 | Skill | What it does |
 |-------|-------------|
-| `/flatten-code` | Reduces nesting beyond 3 levels using guard clauses, early returns, and extraction into named functions |
-| `/self-documenting-code` | Replaces magic numbers, abbreviations, and comment-dependent code with expressive names, constants, and types |
+| `/flatten` | Reduces nesting beyond 3 levels using guard clauses, early returns, and extraction into named functions |
+| `/self-document` | Replaces magic numbers, abbreviations, and comment-dependent code with expressive names, constants, and types |
 | `/simplify-abstractions` | Removes _premature_ interfaces and inheritance, replaces with composition, ensures abstractions earn their cost |
 | `/dependency-injection` | Extracts interfaces for dependencies, moves construction to factories, enables testing with fakes |
 | `/functional-patterns` | Converts imperative loops to `filter`/`map`/`reduce` pipelines, adapted to language idioms (JS chaining, Python comprehensions, Java Streams, etc.) |
@@ -22,7 +22,13 @@ Each skill is language-agnostic and includes detailed before/after examples. See
 
 ## Installation
 
-**Per-project** (recommended):
+**Via [`skills` CLI](https://skills.sh)** (recommended):
+
+```sh
+npx skills add nitrictech/spearmint
+```
+
+**Per-project** (manual):
 
 ```sh
 cp -r skills/ your-project/.claude/skills/
@@ -39,8 +45,8 @@ cp -r skills/* ~/.claude/skills/
 Invoke any skill by name inside Claude Code:
 
 ```
-/flatten-code
-/self-documenting-code
+/flatten
+/self-document
 /simplify-abstractions
 /dependency-injection
 /functional-patterns

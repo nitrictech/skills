@@ -1,0 +1,10 @@
+{
+  "name": "spearmint",
+  "skills": [
+    "./skills/dependency-injection",
+    "./skills/flatten",
+    "./skills/functional-patterns",
+    "./skills/self-document",
+    "./skills/simplify-abstractions"
+  ]
+}

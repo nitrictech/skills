@@ -1,11 +1,11 @@
 ---
-name: flatten-code
+name: flatten
 description: "Find and fix deeply nested code using extraction (pull logic into functions) and inversion (guard clauses, early returns). Targets functions exceeding 3 levels of nesting."
 user-invocable: true
 allowed-tools: Read, Edit, Grep, Glob, Bash
 ---
 
-# Flatten Code
+# Flatten
 
 When invoked, scan the specified file or directory for functions with deep nesting. Any code with a depth greater than 3 levels is excessive. Report findings with file paths and line numbers, then refactor each offending function using **extraction** and **inversion** to reduce nesting.
 
