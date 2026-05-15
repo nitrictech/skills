@@ -34,7 +34,7 @@ If the user has not specified a scope, ask which file or directory to focus on b
 
 3. **Apply the comment rules.** For every comment, decide: does it restate the code (delete), explain a non-obvious *why* (keep), document a public API (keep, but check if naming/types can shrink it), or contradict the code (delete). For each one you delete, ask whether a named constant, extracted predicate, or richer type would carry the meaning the comment used to. See [COMMENTS.md](COMMENTS.md).
 
-4. **Add doc comments where missing.** Every function, method, and class should have a one-sentence doc comment in the language's standard format (JSDoc, godoc, docstrings, `///`). Describe the interface, not the implementation. See [COMMENTS.md](COMMENTS.md).
+4. **Add doc comments where missing.** Every function, method, and class should have a doc comment in the language's standard format (JSDoc, godoc, docstrings, `///`). Describe the interface, not the implementation. See [COMMENTS.md](COMMENTS.md).
 
 5. **Present changes.** Group edits by rule (naming, magic numbers, comment removal, doc comments added) so the user can review each category independently.
 
@@ -43,7 +43,3 @@ See [EXAMPLES.md](EXAMPLES.md) for worked before/after examples.
 ## Adapt to the codebase
 
 Follow existing conventions: case style, doc-comment format, idiomatic abbreviations. Use language-specific type features (`Optional`, `Result`, enums, newtypes) where available. If the codebase has an established convention that conflicts with a rule here (e.g. `I`-prefix interfaces in C#), follow the codebase.
-
----
-
-_Based on "Naming Things in Code" and "Don't Write Comments" by [Code Aesthetic](https://www.youtube.com/@CodeAesthetic)._
