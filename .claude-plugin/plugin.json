@@ -5,6 +5,7 @@
     "./skills/flatten",
     "./skills/functional-patterns",
     "./skills/self-document",
-    "./skills/simplify-abstractions"
+    "./skills/simplify-abstractions",
+    "./skills/review-security"
   ]
 }

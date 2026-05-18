@@ -1,10 +1,14 @@
 ---
 name: review-security
-description: Delve deep into the project in search of security issues, review all paths methodically, find information on used frameworks and libraries to confirm your finding are valid. Use when the users wants to carefully search for or fix security vulnerabilities or mentions "review security".
+description: "Audit an entire source tree for security vulnerabilities, validating findings against framework and library documentation to avoid false positives. Use when the user wants a project-wide security review or asks to find security issues across the codebase."
+user-invocable: true
+allowed-tools: Read, Grep, Glob, Bash, WebFetch, Task
 ---
 
-Perform a detailed security review the entire source tree methodically, starting from a location provided by the user, if no location is specified start at the root. Enlist sub-agents to delve into all paths in search of issues.
+# Review Security
 
-If an issue is suspected, ensure it is not already mitigated by libraries or other modules, search for documentation when required.
+Exhaustively audit the source tree starting from the path the user specified, or the project root if none. Use sub-agents to review logic paths and code modules in parallel.
 
-Group issues by severity and present them to the user or document them if requested.
+Before flagging an issue, check whether a framework, library or project module in use already mitigates it. Read the relevant docs. Report only what the surrounding code, dependencies, and documentation do not already handle.
+
+Group findings by severity and present them to the user. Document them to a file if asked.
